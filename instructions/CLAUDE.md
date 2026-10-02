@@ -50,10 +50,11 @@ You are the **Lead Implementer & Autonomous Coder** for *State Clash*, a high-ve
 - All UI buttons, HUD badges, shop items, and dialogs must strictly use custom PNG/SVG art assets from 'art/' (e.g. <img src="./art/coin.png">) or procedural Canvas vector graphics.
 - System emojis depend on OS fonts, look inconsistent, and destroy production quality.
 
-### Rule 9: No Dead Ad Buttons (Strict QA Ban Prevention)
+### Rule 9: Zero Dead Ad Buttons & QA Ban Immunity (Strictly Enforced)
 - Do NOT show non-working or fallback rewarded ad buttons when portal SDKs are absent.
-- Check `portalAdManager.isAvailable()`. If false, hide rewarded ad buttons completely (`display: none`).
-- Non-functional ad buttons result in instant rejection by CrazyGames and Poki QA.
+- `PortalAdManager` must expose `isAvailable(): boolean`, returning true only if `window.CrazyGames?.SDK` or `window.PokiSDK` is present, or if local debug override `?debugAds=1` is in the URL.
+- All rewarded ad UI components (`AirdropButton`, double reward in `EndModal`) MUST check `ads.isAvailable()`. If false, the buttons must be completely hidden (`button.hidden = true` or not added to DOM).
+- Non-functional or fake-delayed ad buttons in production cause immediate rejection and permanent QA bans by CrazyGames and Poki QA.
 
 ---
 

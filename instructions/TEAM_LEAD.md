@@ -14,6 +14,7 @@ Antigravity acts exclusively as the **Technical Lead & System Architect** under 
    - `npx tsc --noEmit`
    - `npm run build`
    - Clean runtime without browser console errors.
+7. **Zero Dead Ad Buttons (QA Ban Prevention):** Never allow non-functional rewarded ad buttons to render in production when portal SDKs (CrazyGames, Poki) are absent. All rewarded features must be guarded by `ads.isAvailable()`. In absence of active SDK, buttons must be completely hidden (`display: none` / `hidden = true`).
 
 ---
 

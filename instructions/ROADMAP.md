@@ -237,3 +237,24 @@
   - **Storage Manager Progression:**
     - Separate `maxUnlockedLevel` from `currentLevel` so replaying earlier levels doesn't reset overall progress.
 - **Verification:** ESC menu has no Shop; Settings opens cleanly; Level Select grid shows locks and launches chosen level; build passes without errors.
+
+---
+
+### [ ] QOL 6: QA Ad Shield & Safe Rewarded Integration (Zero Dead Buttons)
+- **Recommended Model:** `Claude 3.5 Sonnet`
+- **Scope:**
+  - **PortalAdManager (`src/platform/portal-ad-manager.ts`):**
+    - Add `isAvailable(): boolean` returning `true` only if `window.CrazyGames?.SDK` or `window.PokiSDK` is present, or if `new URLSearchParams(window.location.search).has('debugAds')` is true.
+    - If `isAvailable()` is false, `showRewardedAd()` immediately resolves to `false` without simulating fake delays.
+  - **Airdrop Button (`src/ui/airdrop-button.ts` & `src/main.ts`):**
+    - Accept `PortalAdManager` (or availability predicate).
+    - In `reset()`: if `!ads.isAvailable()`, remain strictly hidden (`this.button.hidden = true`). Never show unclickable or fallback buttons without SDK.
+  - **End Modal (`src/ui/end-modal.ts`):**
+    - In `show()`: only append the `createDoubleButton` if `result.coins > 0 && this.ads.isAvailable()`. If SDK is absent, hide the double reward button completely.
+  - **Main Menu / Game Flow Audit:**
+    - Verify that no dead buttons exist anywhere in the game flow.
+- **Verification:**
+  - When loaded without portal SDK (default): Airdrop button and Double Coins button do not appear in DOM / stay completely hidden (zero dead buttons, passes CrazyGames & Poki QA review).
+  - When loaded with `?debugAds=1`: both buttons appear and can be tested.
+  - `npx tsc --noEmit` and `npm run build` pass cleanly.
+
