@@ -21,6 +21,7 @@ export type TranslationKey =
   | 'battle.defeat'
   | 'battle.nextLevel'
   | 'battle.retry'
+  | 'battle.returnToMain'
   | 'battle.stats'
   | 'battle.rewardCoins'
   | 'hud.level'

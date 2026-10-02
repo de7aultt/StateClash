@@ -21,6 +21,7 @@ export const es: Dictionary = {
   'battle.defeat': 'DERROTA',
   'battle.nextLevel': 'SIGUIENTE NIVEL',
   'battle.retry': 'REINTENTAR',
+  'battle.returnToMain': 'VOLVER AL MENÚ',
   'battle.stats': 'Nivel {level} - {seconds} s',
   'battle.rewardCoins': '+{coins} monedas',
   'hud.level': 'NIVEL {level}',

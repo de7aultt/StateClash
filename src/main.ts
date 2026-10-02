@@ -170,5 +170,6 @@ new SettingsModal(uiRoot, bus, audioControls);
 new LevelSelectModal(uiRoot, bus, upgrades);
 new ShopModal(uiRoot, bus, upgrades);
 new EndModal(uiRoot, bus, ads, upgrades);
+window.addEventListener('contextmenu', (event) => event.preventDefault());
 titleScreen.show();
 loop.start();

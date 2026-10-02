@@ -21,6 +21,7 @@ export const ru: Dictionary = {
   'battle.defeat': 'ПОРАЖЕНИЕ',
   'battle.nextLevel': 'СЛЕДУЮЩИЙ УРОВЕНЬ',
   'battle.retry': 'ЕЩЁ РАЗ',
+  'battle.returnToMain': 'В ГЛАВНОЕ МЕНЮ',
   'battle.stats': 'Уровень {level} - {seconds} с',
   'battle.rewardCoins': '+{coins} монет',
   'hud.level': 'УРОВЕНЬ {level}',

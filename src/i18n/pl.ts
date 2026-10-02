@@ -21,6 +21,7 @@ export const pl: Dictionary = {
   'battle.defeat': 'PORAŻKA',
   'battle.nextLevel': 'NASTĘPNY POZIOM',
   'battle.retry': 'PONÓW',
+  'battle.returnToMain': 'DO MENU GŁÓWNEGO',
   'battle.stats': 'Poziom {level} - {seconds} s',
   'battle.rewardCoins': '+{coins} monet',
   'hud.level': 'POZIOM {level}',

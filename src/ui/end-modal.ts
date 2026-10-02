@@ -27,7 +27,7 @@ export class EndModal {
     reward.append(createIcon('coin'), rewardText);
     const actions = createElement('div', 'end-modal__actions');
     const primary = createTextButton('end-modal__action', t(outcome === 'victory' ? 'battle.nextLevel' : 'battle.retry'));
-    const shop = createIconButton('end-modal__action end-modal__action--secondary', 'shop', t('menu.shop'));
+    const secondary = outcome === 'victory' ? this.createShopButton() : this.createMenuButton(modal);
     const nextLevel = outcome === 'victory' ? result.level + 1 : result.level;
 
     primary.addEventListener(
@@ -38,13 +38,27 @@ export class EndModal {
       },
       { once: true },
     );
-    shop.addEventListener('click', () => this.bus.emit('shop:open', undefined));
     actions.append(primary);
     if (result.coins > 0 && this.ads.isAvailable()) actions.append(this.createDoubleButton(result, rewardText));
-    actions.append(shop);
+    actions.append(secondary);
     modal.append(title, stats, reward, actions);
     this.root.append(modal);
     primary.focus();
+  }
+
+  private createShopButton(): HTMLButtonElement {
+    const button = createIconButton('end-modal__action end-modal__action--secondary', 'shop', t('menu.shop'));
+    button.addEventListener('click', () => this.bus.emit('shop:open', undefined));
+    return button;
+  }
+
+  private createMenuButton(modal: HTMLElement): HTMLButtonElement {
+    const button = createTextButton('end-modal__action end-modal__action--secondary', t('battle.returnToMain'));
+    button.addEventListener('click', () => {
+      modal.remove();
+      this.bus.emit('menu:requested', undefined);
+    });
+    return button;
   }
 
   private createDoubleButton(result: MatchResult, rewardText: HTMLElement): HTMLButtonElement {
