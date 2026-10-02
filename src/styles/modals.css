@@ -1,0 +1,104 @@
+.end-modal,
+.pause-modal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  padding: 1.5rem;
+  background: rgba(5, 8, 14, 0.8);
+  pointer-events: auto;
+}
+
+.pause-modal {
+  z-index: 5;
+}
+
+.pause-modal__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.pause-modal__title {
+  margin-bottom: 0.6rem;
+  font-size: clamp(2rem, 8vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: var(--accent-strong);
+}
+
+.end-modal__title {
+  font-size: clamp(2.2rem, 9vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
+.end-modal--victory .end-modal__title {
+  color: var(--accent-strong);
+  text-shadow: 0 0 26px rgba(63, 169, 255, 0.6);
+}
+
+.end-modal--defeat .end-modal__title {
+  color: #ff6272;
+  text-shadow: 0 0 26px rgba(255, 74, 92, 0.6);
+}
+
+.end-modal__stats {
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.end-modal__reward {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+}
+
+.end-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.end-modal__action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text);
+  background: var(--bg-panel);
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(63, 169, 255, 0.3);
+}
+
+.end-modal__action:hover:not(:disabled),
+.end-modal__action:focus-visible {
+  outline: none;
+  border-color: var(--accent-strong);
+  box-shadow: 0 0 30px rgba(124, 196, 255, 0.55);
+}
+
+.end-modal__action.end-modal__action--secondary {
+  border-color: var(--line);
+}
+
+.end-modal__action.end-modal__action--bonus {
+  border-color: var(--gold);
+  color: var(--gold);
+}

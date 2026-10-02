@@ -1,0 +1,78 @@
+@import './styles/menu.css';
+@import './styles/hud.css';
+@import './styles/modals.css';
+@import './styles/shop.css';
+@import './styles/screens.css';
+
+:root {
+  --bg-deep: #070b12;
+  --bg-panel: rgba(14, 22, 36, 0.86);
+  --line: #1f2f48;
+  --accent: #3fa9ff;
+  --accent-strong: #7cc4ff;
+  --text: #e6eefb;
+  --text-dim: #8497b3;
+  --gold: #ffd24a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+}
+
+#game-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+#ui-root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.icon {
+  width: 1.5em;
+  height: 1.5em;
+  object-fit: contain;
+  flex: none;
+}

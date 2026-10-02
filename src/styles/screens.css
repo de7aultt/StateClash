@@ -1,0 +1,109 @@
+.settings-modal,
+.level-modal {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(5, 8, 14, 0.92);
+  pointer-events: auto;
+}
+
+.settings-modal__panel,
+.level-modal__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.settings-modal__title,
+.level-modal__title {
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: var(--accent-strong);
+}
+
+.settings-modal__caption {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--text-dim);
+}
+
+.settings-modal__languages {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.language-button {
+  min-width: 3.4rem;
+  padding: 0.7rem 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+  background: var(--bg-panel);
+  border: 2px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.language-button--active {
+  color: var(--text);
+  border-color: var(--accent);
+  box-shadow: 0 0 16px rgba(63, 169, 255, 0.4);
+}
+
+.level-modal__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.6rem;
+  width: min(560px, 92vw);
+}
+
+.level-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text);
+  background: var(--bg-panel);
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.level-tile:hover:not(:disabled),
+.level-tile:focus-visible {
+  outline: none;
+  border-color: var(--accent-strong);
+  box-shadow: 0 0 16px rgba(124, 196, 255, 0.5);
+}
+
+.level-tile--current {
+  border-color: var(--gold);
+  box-shadow: 0 0 14px rgba(255, 210, 74, 0.4);
+}
+
+.level-tile:disabled {
+  border-color: var(--line);
+  opacity: 0.6;
+}
+
+.level-tile .icon {
+  width: 45%;
+  height: 45%;
+}
+
+@media (max-width: 480px) {
+  .level-modal__grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
