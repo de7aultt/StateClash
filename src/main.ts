@@ -70,7 +70,7 @@ let shopOpen = false;
 let selectedNodeId: number | null = null;
 
 const hud = new Hud(uiRoot, bus);
-const airdrop = new AirdropButton(uiRoot, bus, async () => {
+const airdrop = new AirdropButton(uiRoot, bus, ads, async () => {
   if (!battleActive) return false;
   const granted = await ads.showRewardedAd();
   return granted && battleActive && nodes.reinforceLargest('player', EMERGENCY_TROOPS);

@@ -40,7 +40,7 @@ export class EndModal {
     );
     shop.addEventListener('click', () => this.bus.emit('shop:open', undefined));
     actions.append(primary);
-    if (result.coins > 0) actions.append(this.createDoubleButton(result, rewardText));
+    if (result.coins > 0 && this.ads.isAvailable()) actions.append(this.createDoubleButton(result, rewardText));
     actions.append(shop);
     modal.append(title, stats, reward, actions);
     this.root.append(modal);

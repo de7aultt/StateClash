@@ -1,6 +1,7 @@
 import type { EventBus } from '../core/events';
 import type { GameEventMap } from '../core/types';
 import { t } from '../i18n';
+import type { PortalAdManager } from '../platform/portal-ad-manager';
 import { createIconButton, setButtonLabel } from './dom';
 import { showToast } from './toast';
 
@@ -12,6 +13,7 @@ export class AirdropButton {
   constructor(
     private readonly root: HTMLElement,
     bus: EventBus<GameEventMap>,
+    private readonly ads: PortalAdManager,
     private readonly requestAirdrop: () => Promise<boolean>,
   ) {
     this.button.hidden = true;
@@ -24,7 +26,7 @@ export class AirdropButton {
   reset(): void {
     this.used = false;
     this.pending = false;
-    this.button.hidden = false;
+    this.button.hidden = !this.ads.isAvailable();
     this.sync();
   }
 
